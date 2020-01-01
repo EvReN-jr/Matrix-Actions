@@ -1,0 +1,76 @@
+import os
+import numpy as np
+
+def create_arr():
+  while True:
+    try:
+      n=int(input("Enter The Matrix Size: "))
+      break
+    except:
+      os.system('cls' if os.name=='nt' else 'clear')
+
+  arr = np.array([[0]*(n)]*(n))
+  
+  os.system('cls' if os.name=='nt' else 'clear')
+  for i in range(n):
+    for j in range(n):
+      while True:
+        try:
+          print("Matrix:",n,"x",n," ",i," ",j)
+          element=int(input("Enter The Matrix Element: "))
+          break
+        except:
+          print("Enter A Number")
+      arr[i][j]=element
+  return arr
+def action(arr):
+  while True:
+    print("""
+    [0] Determinant
+    [1] Plus
+    [2] Minus
+    [3] Multiply
+    [4] Divided
+    [5] Exit
+    """)
+    while True:
+      ac=input("Enter Action Number: ")
+      if ac== "0" or ac== "1" or ac== "2" or ac== "3" or ac== "4" or ac=="5":
+        break 
+    os.system('cls' if os.name=='nt' else 'clear')
+
+    if ac=="5":
+      break
+    print("Action: ",ac)
+    print(arr)
+    
+    if ac=="0":
+      print("det: ",int(round(np.linalg.det(arr))))
+    else:
+      while True:
+          try:
+            nu=int(input("Enter The Number: "))
+            break
+          except:
+            os.system('cls' if os.name=='nt' else 'clear')
+      if ac=="1":
+        print(nu+arr)
+      if ac=="2":
+        print(-nu+arr)
+      if ac=="3":
+        print(nu*arr)
+      if ac=="4":
+        if nu!=0:
+          arr1=arr
+          for i in range(len(arr1)):
+            for j in range(len(arr1)):
+              arr1[i][j]=arr[i][j]/nu
+          print(arr1)
+        else:
+          print("Array is not divided by 0 ")
+    a=input("")
+    os.system('cls' if os.name=='nt' else 'clear')
+    
+#ar=np.array([[1,2],[2,4]])
+action(create_arr())
+
