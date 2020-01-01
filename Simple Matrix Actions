@@ -1,5 +1,6 @@
 import os
 import numpy as np
+# import libs
 
 def create_arr():
   while True:
@@ -8,10 +9,11 @@ def create_arr():
       break
     except:
       os.system('cls' if os.name=='nt' else 'clear')
+    # SquareMatrix Size
 
-  arr = np.array([[0]*(n)]*(n))
+  arr = np.array([[0]*(n)]*(n)) # create matrix
   
-  os.system('cls' if os.name=='nt' else 'clear')
+  os.system('cls' if os.name=='nt' else 'clear')# cleaning the console
   for i in range(n):
     for j in range(n):
       while True:
@@ -21,6 +23,7 @@ def create_arr():
           break
         except:
           print("Enter A Number")
+      # Enter the matrix element 
       arr[i][j]=element
   return arr
 def action(arr):
@@ -36,16 +39,16 @@ def action(arr):
     while True:
       ac=input("Enter Action Number: ")
       if ac== "0" or ac== "1" or ac== "2" or ac== "3" or ac== "4" or ac=="5":
-        break 
+        break # selections control
     os.system('cls' if os.name=='nt' else 'clear')
-
+    # conditions
     if ac=="5":
       break
     print("Action: ",ac)
     print(arr)
     
     if ac=="0":
-      print("det: ",int(round(np.linalg.det(arr))))
+      print("det: ",int(round(np.linalg.det(arr))))# determinant function
     else:
       while True:
           try:
@@ -53,6 +56,7 @@ def action(arr):
             break
           except:
             os.system('cls' if os.name=='nt' else 'clear')
+      # enter for number
       if ac=="1":
         print(nu+arr)
       if ac=="2":
@@ -60,7 +64,7 @@ def action(arr):
       if ac=="3":
         print(nu*arr)
       if ac=="4":
-        if nu!=0:
+        if nu!=0:#control of the ZeroDivisionError
           arr1=arr
           for i in range(len(arr1)):
             for j in range(len(arr1)):
@@ -73,4 +77,5 @@ def action(arr):
     
 #ar=np.array([[1,2],[2,4]])
 action(create_arr())
+
 
